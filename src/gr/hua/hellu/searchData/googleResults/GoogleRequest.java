@@ -26,6 +26,7 @@ public class GoogleRequest {
     public GoogleRequest(String mainQuery){
         
         this.query = mainQuery;
+        this.ListOfElelements = new ArrayList<String>();
         //this.httpClient = new HttpConnection(null, this.PAGE);
     }
        
@@ -65,12 +66,11 @@ public class GoogleRequest {
             }
             HttpConnection httpClient = new HttpConnection(URL, this.PAGE);
             httpClient.connect();
-//            HttpExceptionHandler httpHandler = new HttpExceptionHandler(httpClient);
-//            httpClient = httpHandler.checkStatement();
-            content = httpClient.getContent();
-            
-            
-            if (content.equals("")) {
+            HttpExceptionHandler httpHandler = new HttpExceptionHandler(httpClient);
+            httpClient = httpHandler.checkStatement();
+                        
+            if ( httpClient == null )break;
+            else if ((content = httpClient.getContent() ).equals("")) {
                 break;
             }
             
@@ -84,9 +84,9 @@ public class GoogleRequest {
 
             
             if (publications.length <= (20+1) ){
-                this.ListOfElelements = TransportPublicationsToAList(publications, 1);
+                this.ListOfElelements.addAll(TransportPublicationsToAList(publications, 1));
             } else {//contains a profil for the author
-                this.ListOfElelements = TransportPublicationsToAList(publications, 2);
+                this.ListOfElelements.addAll(TransportPublicationsToAList(publications, 2));
             }
             //delay after every site
             delay();

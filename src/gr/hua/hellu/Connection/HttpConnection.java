@@ -87,6 +87,7 @@ public class HttpConnection extends DefaultHttpClient{
             
             System.out.println("Successful connect to site: " + this.TYPE_OF_SITE + "\nLoading page:\n" + this.URL
                     + " with method: " + httpget.getMethod() + "\n\n");
+            this.ConnectionStatus = this.CONNECTED;
             
         }catch(IOException ex){
             
@@ -101,8 +102,6 @@ public class HttpConnection extends DefaultHttpClient{
             
             this.Content = "";
         }
-        
-        this.ConnectionStatus = this.CONNECTED;
     }
     
     public int getConnectionStatus(){

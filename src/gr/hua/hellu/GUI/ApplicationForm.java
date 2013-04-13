@@ -957,11 +957,10 @@ public class ApplicationForm extends javax.swing.JFrame {
             searchingLabel.repaint();
             ArrayList<Publication> citations = new ArrayList<Publication>();
             ArrayList<String> CitationList = new ArrayList<String>();
-            //HttpRequest.ParseQueryToGoogleScholarForCitations(CitationList, Publications.get(i).getHrefCitations());
+
             GoogleRequest request2 = new GoogleRequest(Publications.get(i).getHrefCitations());
             CitationList = request2.getPublications(false);
             if ( CitationList != null ){
-                System.out.println("\n\nloukas\n\n");
                 //HttpParse.httpExportDataForCitations(CitationList, citations);
                 DataFromCitations parse = new DataFromCitations(CitationList);
                 citations = parse.parseData();
@@ -974,7 +973,6 @@ public class ApplicationForm extends javax.swing.JFrame {
                 Publications.remove(i);
                 Publications.add(i, compare.getCitedPulication()); 
             }
-            System.out.println("\n\nmouzos%%\n\n");
             //updateTable
             Object [] o;
             if( Publications.get(i).getYear() == 0 ){
