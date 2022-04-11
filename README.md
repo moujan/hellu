@@ -6,3 +6,7 @@ Basic function: separation of citations of publications in self-citations and he
 
 While you are using the appplication: 
 -----In case you are receiving a message like 'Service Unavailable' or the number of citations is lower than google scholar's results as they are shown in its page, then your IP address is blocked by Google Scholar for 24 hours.
+
+
+### Please note
+This project has moved to [lmouzos](https://github.com/lmouzos/hellu) and it is actively developed there (hopefully on time availability).
